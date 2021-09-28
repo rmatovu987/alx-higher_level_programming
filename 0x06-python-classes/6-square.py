@@ -1,32 +1,29 @@
 #!/usr/bin/python3
-"""Write a class Square that defines a square"""
+"""Write a class Square that defines a square by: (based on 5-square.py)
+"""
 
 
 class Square:
-    """Write a class that defines a square by: (based on 2-square.py)"""
+    """Write a class that definesa square by: (based on 5-square.py)"""
     def __init__(self, size=0, position=(0, 0)):
-        self.__size = size
-        self.__position = position
-
-    """Calculates the area"""
-    def area(self):
-        return self.__size ** 2
+        self.size = size
+        self.position = position
 
     @property
     def size(self):
         return self.__size
-    
-    @property
-    def position(self):
-        return self.__position
 
     @size.setter
     def size(self, value):
         if type(value) != int:
-            raise TypeError("size must be an integer")
+            raise TypeError('size must be an integer')
         if value < 0:
-            raise ValueError("size must be >= 0")
+            raise ValueError('size must be >= 0')
         self.__size = value
+
+    @property
+    def position(self):
+        return self.__position
 
     @position.setter
     def position(self, value):
@@ -38,13 +35,15 @@ class Square:
             raise ValueError('position must be a tuple of 2 positive integers')
         self.__position = value
 
+    def area(self):
+        return self.__size ** 2
+
     def my_print(self):
-        import sys
-        if self.__size == 0:
-            print()
+        if self.size != 0:
+            if self.position[1] is not 0:
+                print('\n' * self.position[1], end='')
+            for token in range(self.size):
+                print(' ' * self.position[0], end='')
+                print('#' * self.size)
         else:
-            if self.__position[0] != 0:
-                print("\n" * self.__position[1], end="")
-            for t in range(self.__size):
-                print(" " * self.__position[0], end="")
-                print("#" * self.__size, file=sys.stdout)
+            print()
