@@ -4,7 +4,7 @@
 
 class Square:
     """Write a class that defines a square by: (based on 2-square.py)"""
-    def __init__(self, size=0):        
+    def __init__(self, size=0):
         self.__size = size
 
     """Calculates the area"""
