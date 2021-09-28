@@ -4,10 +4,7 @@
 
 class Square:
     """Write a class that defines a square by: (based on 1-square.py)"""
-    def __init__(self, size):
-        if size is None:
-            size = 0
-
+    def __init__(self, size=0):
         if type(size) != int:
             raise TypeError("size must be an integer")
         if size < 0:
