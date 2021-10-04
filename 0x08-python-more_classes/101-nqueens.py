@@ -17,7 +17,7 @@ if __name__ == "__main__":
     """Board"""
     box = []
 
-    """Qeens"""
+    """Queens"""
     for q in range(n):
         box.append([q, None])
 
@@ -27,7 +27,7 @@ if __name__ == "__main__":
                 return True
         return False
 
-    """2 Qeens a row"""
+    """2 Queens a row"""
 
     def wrong_way(word, num):
         if queen_checker(num):
