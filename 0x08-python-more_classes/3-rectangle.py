@@ -11,6 +11,8 @@ class Rectangle:
         self.height = height
 
     def __str__(self):
+        """Returns an informal and nicely printable string representation
+        of a Rectangle instance, filled with the '#' character."""
         if self.__width == 0 or self.__height == 0:
             return ''
         rec_str = ''
