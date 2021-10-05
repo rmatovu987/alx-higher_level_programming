@@ -1,7 +1,4 @@
 #!/usr/bin/python3
-"""Write a function magic string"""
-
-
-def magic_string(n=[0]):
-    n[0] += 1
-    return str("BestSchool, " * (n[0] - 1)) + "BestSchool"
+def magic_string(i=[0]):
+    i[0] += 1
+    return str("Holberton, " * (i[0] - 1)) + "Holberton"
