@@ -44,6 +44,12 @@ class TestMaxInteger(unittest.TestCase):
         result = max_integer(l)
         self.assertEqual(result, 8)
 
+    def test_empty_list(self):
+        """Test with an empty list: should return the value"""
+        l = []
+        result = max_integer(l)
+        self.assertEqual(result, None)
+
     def test_strings(self):
         """Test with a list of strings: should return the first string"""
         l = ["hi", "hello"]

@@ -6,15 +6,18 @@ def matrix_divided(matrix, div):
     """Return new matrix after division"""
 
     if not isinstance(matrix, list) or len(matrix) == 0 or not matrix[0]:
-        raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
-    
+        raise TypeError(
+            "matrix must be a matrix (list of lists) of integers/floats")
+
     for row in matrix:
         if len(row) == 0:
-            raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
+            raise TypeError(
+                "matrix must be a matrix (list of lists) of integers/floats")
         for x in row:
             if type(x) is not int and type(x) is not float:
-                raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
-    
+                raise TypeError(
+                    "matrix must be a matrix (list of lists) of integers/floats")
+
     len_rows = []
     for row in matrix:
         len_rows.append(len(row))
