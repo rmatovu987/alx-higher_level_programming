@@ -5,10 +5,7 @@
 def write_file(filename="", text=""):
     """Write a string to a text file"""
 
-    count = 0
-    with open(filename) as f:
-        for i in text:
-            count += 1
+    with open(filename, mode="w", encoding="utf-8") as f:
         f.write(text)
 
-    return count
+    return len(text)
