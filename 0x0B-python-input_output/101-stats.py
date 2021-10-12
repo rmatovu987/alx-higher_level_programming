@@ -44,6 +44,7 @@ if __name__ == "__main__":
                 s_500 += 1
             i += 1
             stat_sum = s_200 + s_401 + s_403 + s_404 + s_405 + s_500
+            
     except KeyboardInterrupt as k:
         print("File size: {:d}".format(fs_sum))
         print("200: {:d}".format(s_200))
