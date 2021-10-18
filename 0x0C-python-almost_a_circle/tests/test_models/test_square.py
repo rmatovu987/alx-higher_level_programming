@@ -2,13 +2,14 @@
 '''UnitTesting  the Square module'''
 
 
-import unittest
-from unittest.mock import patch
-from io import StringIO
-from contextlib import redirect_stdout
-import pycodestyle
-import os
 import inspect
+import os
+import unittest
+from contextlib import redirect_stdout
+from io import StringIO
+from unittest.mock import patch
+
+import pycodestyle
 from models.square import Square
 
 
@@ -101,7 +102,7 @@ class TestSquare(unittest.TestCase):
                         x=-5,
                         y=6
                         )
-        self.assertEqual(obj.height,4)  # height
+        self.assertEqual(obj.height, 4)  # height
         self.assertEqual(obj.width, 4)  # width
         self.assertEqual(obj.size, 4)  # size
         self.assertEqual(obj.x, 2)  # x
@@ -160,3 +161,7 @@ class TestSquare(unittest.TestCase):
         with redirect_stdout(buf):
             obj.display()
         self.assertEqual(buf.getvalue(), '\n\n\n  ##\n  ##\n')  # display
+
+
+if __name__ == '__main__':
+    unittest.main()
