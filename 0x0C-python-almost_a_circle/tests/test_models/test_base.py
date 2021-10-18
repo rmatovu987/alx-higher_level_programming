@@ -2,11 +2,12 @@
 '''UnitTesting  the base module'''
 
 
-import unittest
-import pycodestyle
-import os
 import inspect
 import json
+import os
+import unittest
+
+import pycodestyle
 from models.base import Base
 from models.rectangle import Rectangle
 from models.square import Square
@@ -27,8 +28,8 @@ class TestBase(unittest.TestCase):
         '''creating an instance of the class Base with out passing the id'''
         obj = Base()
         obj2 = Base()
-        self.assertEqual(obj.id, 5)
-        self.assertEqual(obj2.id, 6)
+        self.assertEqual(obj.id, 1)
+        self.assertEqual(obj2.id, 2)
 
     def test_init_base_obj_2(self):
         '''creating an instance of the class Base with specifying the id'''
@@ -49,9 +50,9 @@ class TestBase(unittest.TestCase):
         with open("Rectangle.json", mode="r") as myFile:
             self.assertEqual([], json.load(myFile))
 
-
     def test_to_json_string_AND_from_json_string_rec(self):
-        '''test the to_json_string and from_json_string methods with the Rectangle class'''
+        '''test the to_json_string and from_json_string methods 
+        with the Rectangle class'''
         list_input = [
             {'id': 89, 'width': 10, 'height': 4},
             {'id': 7, 'width': 1, 'height': 7}
@@ -63,7 +64,8 @@ class TestBase(unittest.TestCase):
         self.assertIsInstance(list_output, list)
 
     def test_to_json_string_AND_from_json_string_sqr(self):
-        '''test the to_json_string and from_json_string methods with the Square class'''
+        '''test the to_json_string and from_json_string methods 
+        with the Square class'''
         list_input = [
             {'id': 99, 'size': 10},
             {'id': 9, 'size': 1}
@@ -91,7 +93,7 @@ class TestBase(unittest.TestCase):
 
         # load data from the rectangle json file
         list_rectangles_output = Rectangle.load_from_file()
-        #check if the objects in the lists are rectangles
+        # check if the objects in the lists are rectangles
         for rect in list_rectangles_input:
             self.assertIsInstance(rect, Rectangle)
 
@@ -123,58 +125,59 @@ class TestBase(unittest.TestCase):
             self.assertIsInstance(square, Square)
 
     def test_create(self):
-            '''Tests the create method of the Base class.
-            '''
-            polygon = Base.create(**{
-                'id': '89',
-            })
-            self.assertIsNone(polygon)
-            # region Rectangle
-            polygon = Rectangle.create(**{
-                'id': '89', 'width': 3, 'height': 5,
-                'x': 8, 'y': 16
-            })
-            self.assertEqual(polygon.id, '89')
-            self.assertEqual(polygon.width, 3)
-            self.assertEqual(polygon.height, 5)
-            self.assertEqual(polygon.x, 8)
-            self.assertEqual(polygon.y, 16)
-            polygon = Rectangle.create(**{
-                'id': None, 'width': 3, 'height': 5,
-                'x': 8, 'y': 16, 'foo': 23
-            })
-            self.assertEqual(polygon.id, None)
-            self.assertEqual(polygon.width, 3)
-            self.assertEqual(polygon.height, 5)
-            self.assertEqual(polygon.x, 8)
-            self.assertEqual(polygon.y, 16)
-            with self.assertRaises(AttributeError):
-                print(polygon.foo)
-            # endregion
-            # region Square
-            polygon = Square.create(**{
-                'id': '89', 'width': 3, 'height': 5,
-                'size': 15, 'x': 8, 'y': 16
-            })
-            self.assertEqual(polygon.id, '89')
-            self.assertEqual(polygon.size, 15)
-            self.assertEqual(polygon.x, 8)
-            self.assertEqual(polygon.y, 16)
-            polygon = Square.create(**{
-                'id': None, 'width': 13, 'height': 25,
-                'x': 8, 'y': 16, 'foo': 34
-            })
-            self.assertEqual(polygon.id, None)
-            self.assertNotEqual(polygon.size, 13)
-            self.assertNotEqual(polygon.width, 13)
-            self.assertNotEqual(polygon.height, 25)
-            self.assertEqual(polygon.size, polygon.width)
-            self.assertEqual(polygon.size, polygon.height)
-            self.assertEqual(polygon.x, 8)
-            self.assertEqual(polygon.y, 16)
-            with self.assertRaises(AttributeError):
-                print(polygon.foo)
-            # endregion
+        '''Tests the create method of the Base class.
+        '''
+        polygon = Base.create(**{
+            'id': '89',
+        })
+        self.assertIsNone(polygon)
+        # region Rectangle
+        polygon = Rectangle.create(**{
+            'id': '89', 'width': 3, 'height': 5,
+            'x': 8, 'y': 16
+        })
+        self.assertEqual(polygon.id, '89')
+        self.assertEqual(polygon.width, 3)
+        self.assertEqual(polygon.height, 5)
+        self.assertEqual(polygon.x, 8)
+        self.assertEqual(polygon.y, 16)
+        polygon = Rectangle.create(**{
+            'id': None, 'width': 3, 'height': 5,
+            'x': 8, 'y': 16, 'foo': 23
+        })
+        self.assertEqual(polygon.id, None)
+        self.assertEqual(polygon.width, 3)
+        self.assertEqual(polygon.height, 5)
+        self.assertEqual(polygon.x, 8)
+        self.assertEqual(polygon.y, 16)
+        with self.assertRaises(AttributeError):
+            print(polygon.foo)
+        # endregion
+        # region Square
+        polygon = Square.create(**{
+            'id': '89', 'width': 3, 'height': 5,
+            'size': 15, 'x': 8, 'y': 16
+        })
+        self.assertEqual(polygon.id, '89')
+        self.assertEqual(polygon.size, 15)
+        self.assertEqual(polygon.x, 8)
+        self.assertEqual(polygon.y, 16)
+        polygon = Square.create(**{
+            'id': None, 'width': 13, 'height': 25,
+            'x': 8, 'y': 16, 'foo': 34
+        })
+        self.assertEqual(polygon.id, None)
+        self.assertNotEqual(polygon.size, 13)
+        self.assertNotEqual(polygon.width, 13)
+        self.assertNotEqual(polygon.height, 25)
+        self.assertEqual(polygon.size, polygon.width)
+        self.assertEqual(polygon.size, polygon.height)
+        self.assertEqual(polygon.x, 8)
+        self.assertEqual(polygon.y, 16)
+        with self.assertRaises(AttributeError):
+            print(polygon.foo)
+        # endregion
+
 
 class Test_Base_csv_file_save_load(unittest.TestCase):
     """Unittests for testing save_to_file_csv method of Base class."""

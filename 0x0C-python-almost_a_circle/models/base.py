@@ -108,7 +108,7 @@ class Base:
         """
 
         if (type(list_objs) != list and
-           list_objs is not None or
+           list_objs is not None and
            not all(isinstance(x, cls) for x in list_objs)):
             raise TypeError("list_objs must be a list of instances")
 
