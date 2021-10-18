@@ -2,14 +2,13 @@
 '''UnitTesting  the Rectangle module'''
 
 
-import inspect
-import os
 import unittest
-from contextlib import redirect_stdout
-from io import StringIO
 from unittest.mock import patch
-
+from io import StringIO
+from contextlib import redirect_stdout
 import pycodestyle
+import os
+import inspect
 from models.rectangle import Rectangle
 
 
@@ -97,7 +96,7 @@ class TestRectangle(unittest.TestCase):
                         x=-5,
                         y='6'
                         )
-        self.assertEqual(obj.height, 2)  # height
+        self.assertEqual(obj.height,2)  # height
         self.assertEqual(obj.width, 4)  # width
         self.assertEqual(obj.x, 2)  # x
         self.assertEqual(obj.y, 2)  # y
@@ -162,4 +161,3 @@ class TestRectangle(unittest.TestCase):
         with redirect_stdout(buf):
             obj.display()
         self.assertEqual(buf.getvalue(), '\n\n\n  #####\n  #####\n')  # display
-
