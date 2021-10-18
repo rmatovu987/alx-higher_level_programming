@@ -46,7 +46,7 @@ class Square(Rectangle):
     def size(self, value):
         """Sets the size attribute."""
 
-        if type(value) is not int:
+        if not isinstance(value, int):
             raise TypeError("width must be an integer")
         if value <= 0:
             raise ValueError("width must be > 0")
@@ -65,7 +65,7 @@ class Square(Rectangle):
 
         if args is not None and len(args) != 0:
             if len(args) >= 1:
-                if type(args[0]) != int and args[0] is not None:
+                if not isinstance(args[0], int) and args[0] is not None:
                     raise TypeError("id must be an integer")
                 self.id = args[0]
             if len(args) > 1:
@@ -77,7 +77,7 @@ class Square(Rectangle):
         else:
             for key, value in kwargs.items():
                 if key == "id":
-                    if type(value) != int and value is not None:
+                    if not isinstance(args[0], int) and value is not None:
                         raise TypeError("id must be an integer")
                     self.id = value
                 if key == "size":
