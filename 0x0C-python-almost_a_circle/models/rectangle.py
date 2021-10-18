@@ -20,21 +20,6 @@ class Rectangle(Base):
         """Retrieve the width of the rectangle"""
         return self.__width
 
-    @property
-    def height(self):
-        """Retrieve the height of the rectangle"""
-        return self.__height
-
-    @property
-    def x(self):
-        """Retrieve the x position of the rectangle"""
-        return self.__x
-
-    @property
-    def y(self):
-        """Retrieve the y position of the rectangle"""
-        return self.__y
-
     @width.setter
     def width(self, value):
         """Set the width of the rectangle"""
@@ -44,14 +29,25 @@ class Rectangle(Base):
             raise ValueError("width must be > 0")
         self.__width = value
 
+    @property
+    def height(self):
+        """Retrieve the height of the rectangle"""
+        return self.__height
+
     @height.setter
     def height(self, value):
         """Set the height of the rectangle"""
+        print(type(value))
         if not isinstance(value, int):
             raise TypeError("height must be an integer")
         if value <= 0:
             raise ValueError("height must be > 0")
         self.__height = value
+
+    @property
+    def x(self):
+        """Retrieve the x position of the rectangle"""
+        return self.__x
 
     @x.setter
     def x(self, value):
@@ -61,6 +57,11 @@ class Rectangle(Base):
         if value <= 0:
             raise ValueError("x must be >= 0")
         self.__x = value
+
+    @property
+    def y(self):
+        """Retrieve the y position of the rectangle"""
+        return self.__y
 
     @y.setter
     def y(self, value):
@@ -88,7 +89,7 @@ class Rectangle(Base):
 
     def __str__(self):
         """Return a string representation of the rectangle"""
-        return "[Rectangle] ({}) {}{} - {}{}".format(
+        return "[Rectangle] ({}) {}/{} - {}/{}".format(
             self.id, self.__x, self.__y, self.__width, self.__height)
 
     def update(self, *args, **kwargs):
