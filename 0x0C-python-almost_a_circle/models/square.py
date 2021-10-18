@@ -53,39 +53,24 @@ class Square(Rectangle):
         self.height = value
 
     def update(self, *args, **kwargs):
-        """Updates attributes of an instance.
-
-        Args:
-            - id attribute
-            - size attribute
-            - x attribute
-            - y attribute
-        """
-
-        if args is not None and len(args) != 0:
-            if len(args) >= 1:
-                if not isinstance(args[0], int) and args[0] is not None:
-                    raise TypeError("id must be an integer")
-                self.id = args[0]
-            if len(args) > 1:
-                self.size = args[1]
-            if len(args) > 2:
-                self.x = args[2]
-            if len(args) > 3:
-                self.y = args[3]
+        '''Updates the instance attributes from
+        the arguments passed in a strict order
+        or from the kwargs
+        '''
+        i = 0
+        attributes = ['id', 'size', 'x', 'y']
+        if len(args) > 0:
+            for attr in attributes:
+                if i > len(args) - 1:
+                    break
+                setattr(self, attr, args[i])
+                i += 1
         else:
             for key, value in kwargs.items():
-                if key == "id":
-                    if not isinstance(args[0], int) and value is not None:
-                        raise TypeError("id must be an integer")
-                    self.id = value
-                if key == "size":
-                    self.size = value
-                if key == "x":
-                    self.x = value
-                if key == "y":
-                    self.y = value
-
+                if key not in attributes:
+                    continue
+                setattr(self, key, value)
+                
     def to_dictionary(self):
         """Returns the dictionary representation of a Square."""
 
