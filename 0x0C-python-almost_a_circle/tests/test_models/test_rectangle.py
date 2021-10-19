@@ -7,7 +7,6 @@ import os
 import unittest
 from contextlib import redirect_stdout
 from io import StringIO
-from unittest.mock import patch
 
 import pycodestyle
 from models.rectangle import Rectangle
@@ -29,7 +28,7 @@ class TestRectangle(unittest.TestCase):
         only height and width
         '''
         obj = Rectangle(5, 8)
-        self.assertEqual(obj.id, 1)
+        self.assertEqual(obj.id, 23)
 
     def test_init_Rectangle_obj_2(self):
         '''creating an instance of the class Rectangle with specifying
