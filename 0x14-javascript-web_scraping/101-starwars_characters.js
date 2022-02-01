@@ -2,33 +2,6 @@
 
 const request = require('request');
 
-/*
-let characters = [];
-let dict = {};
-
-function addToDict (url, name) {
-  dict[url] = name;
-}
-
-request('http://swapi.co/api/films/' + process.argv[2], function (error, response, body) {
-  if (error) {
-    console.error(error);
-  }
-  characters = JSON.parse(body).characters
-  characters.forEach(function (url) {
-    request(url, function (error, response, body) {
-      if (error) {
-        console.error(error);
-      }
-      addToDict(url, JSON.parse(body).name);
-    });
-  });
-  characters.forEach(function (item) {
-    console.log(dict[item]);
-  })
-});
-*/
-
 function helpRequest (arr, i) {
   if (i === arr.length) {
     return;
@@ -42,7 +15,7 @@ function helpRequest (arr, i) {
   });
 }
 
-request('http://swapi.co/api/films/' + process.argv[2], function (error, response, body) {
+request('https://swapi-api.hbtn.io/api/films/' + process.argv[2], function (error, response, body) {
   if (error) {
     console.error(error);
   }
